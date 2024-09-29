@@ -1,12 +1,26 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
-
+    <h2> Order <%= @order.id %> </h2>
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+  <div>
+  </header>
+  <h3>Order Details</h3>
+
+ <table>
+  <tbody>
+  <% enhanced_cart.each do |item| %>
+    <%= render 'carts/item', product: item[:product], quantity: item[:quantity] %>
+  <% end %>
+  <div>
+
   </div>
+  </tbody>
+</table>
+
+  <br></br>
+  <p>A confirmation email has been sent to: <%= @order.email %></p>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
